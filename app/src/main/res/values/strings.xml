@@ -1,0 +1,38 @@
+<resources>
+
+    <!--TaskFragment -->
+    <string name="app_name">To do list</string>
+    <string name="list_of_tasks">List of Tasks</string>
+    <string name="add_tasks">add tasks</string>
+    <string name="task_update">Atualizar</string>
+
+    <!--TaskFragmentList -->
+    <string name="title">Title</string>
+    <string name="deadline">Prazo</string>
+    <string name="hour">Hour</string>
+    <string name="delete_task">"Delete"</string>
+    <string name="updated_task">"Updated"</string>
+    <string name="there_are_no_tasks">There are no tasks</string>
+
+    <!--    item task(Adapter) -->
+    <string name="date_label_adapter">Date:</string>
+    <string name="description_label_adapter">Descrição:</string>
+    <string name="title_label_adapter">Título da tarefa:</string>
+
+
+    <!-- events for CRUD   <-->
+    <string name="successfully_to_inserted_task">Successful insert task</string>
+    <string name="error_to_inserted_task">There was an error when inserted Task</string>
+    <string name="successfully_to_updated_task">Successful update task</string>
+    <string name="error_to_updated_task">"There was an error when updated Task"</string>
+    <string name="error_to_deleted_task">"There was an error when deleted Task"</string>
+    <string name="successfully_to_deleted_task">"Successful delete task"</string>
+
+    <!--array for priorities-->
+    <string-array name="priorities">
+        <item>High Priority</item>
+        <item>Medium Priority</item>
+        <item>Low Priority</item>
+    </string-array>
+
+</resources>

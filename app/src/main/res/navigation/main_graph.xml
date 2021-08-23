@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/taskListFragment">
+    <fragment
+        android:id="@+id/taskListFragment"
+        android:name="com.hianuy.todolist.project.ui.fragment.TaskListFragment"
+        android:label="List of tasks"
+        tools:layout="@layout/task_list_fragment" >
+        <action
+            android:id="@+id/action_taskListFragment_to_taskFragment"
+            app:destination="@id/taskFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/taskFragment"
+        android:name="com.hianuy.todolist.project.ui.fragment.TaskFragment"
+        android:label="Add Task"
+        tools:layout="@layout/task_fragment" >
+        <argument
+            android:name="task"
+            app:argType="com.hianuy.todolist.project.database.entity.TaskEntity"
+            android:defaultValue="@null"
+            app:nullable="true"
+            />
+    </fragment>
+</navigation>
