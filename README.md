@@ -21,7 +21,7 @@ Todas as funcionalidades de um CRUD estão presentes, ou seja podemos criar uma 
 - Navigation
 - ROOM
 - Coroutines
-- Injeção de Dependência dos viewModels via construtor
+- Injeção de Dependência utilizando Koin
 - Padrões de projeto como Repository com utilização de Interface
 
 # Demostração do app
