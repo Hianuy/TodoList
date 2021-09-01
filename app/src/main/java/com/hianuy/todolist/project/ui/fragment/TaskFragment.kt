@@ -30,6 +30,7 @@ import com.hianuy.todolist.project.ui.adapter.SpinnerAdapter
 import com.hianuy.todolist.project.ui.viewmodel.TaskViewModel
 import java.util.*
 import com.hianuy.todolist.project.helper.*
+import org.koin.android.ext.android.inject
 
 class TaskFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
@@ -40,20 +41,23 @@ class TaskFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private lateinit var customItems: CustomItems
 
 
-    private val viewModel: TaskViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val taskDao: TaskDao = DatabaseHelper
-                    .getInstance(requireContext()).taskDao
+//    private val viewModel: TaskViewModel by viewModels {
+//        object : ViewModelProvider.Factory {
+//            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+//                val taskDao: TaskDao = DatabaseHelper
+//                    .getInstance(requireContext()).taskDao
+//
+//                val repository: TaskRepository = DatabaseDataSource(taskDao)
+//
+//                return TaskViewModel(repository) as T
+//            }
+//
+//
+//
+//        }
+//    }
 
-                val repository: TaskRepository = DatabaseDataSource(taskDao)
-
-                return TaskViewModel(repository) as T
-            }
-
-
-        }
-    }
+    private val viewModel: TaskViewModel by inject()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

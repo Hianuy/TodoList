@@ -20,6 +20,7 @@ interface TaskRepository {
         deadline: String
     )
 
+
     suspend fun deleteTask(id: Long)
 
     suspend fun deleteAllTasks()

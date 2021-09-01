@@ -14,28 +14,28 @@ abstract class DatabaseHelper : RoomDatabase() {
     abstract val taskDao: TaskDao
 
 
-    companion object {
-        private var instance: DatabaseHelper? = null
-
-        // singleton
-        // pois cada instancia do database é muito cara é custosa
-        //
-        fun getInstance(context: Context): DatabaseHelper {
-            val liveInstance = instance
-            if (liveInstance != null)
-                return liveInstance
-
-            synchronized(this) {
-                val buildingInstance = Room.databaseBuilder(
-                    context.applicationContext,
-                    DatabaseHelper::class.java,
-                    "app_database"
-                ).build()
-                instance = buildingInstance
-                return buildingInstance
-            }
-        }
-    }
+//    companion object {
+//        private var instance: DatabaseHelper? = null
+//
+//        // singleton
+//        // pois cada instancia do database é muito cara é custosa
+//        //
+//        fun getInstance(context: Context): DatabaseHelper {
+//            val liveInstance = instance
+//            if (liveInstance != null)
+//                return liveInstance
+//
+//            synchronized(this) {
+//                val buildingInstance = Room.databaseBuilder(
+//                    context.applicationContext,
+//                    DatabaseHelper::class.java,
+//                    "app_database"
+//                ).build()
+//                instance = buildingInstance
+//                return buildingInstance
+//            }
+//        }
+//    }
 
 
 }

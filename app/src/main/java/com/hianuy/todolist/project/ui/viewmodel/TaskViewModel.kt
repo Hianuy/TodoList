@@ -8,11 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.hianuy.todolist.R
 import com.hianuy.todolist.R.string.*
 import com.hianuy.todolist.project.database.entity.Priority
-import com.hianuy.todolist.project.repository.TaskRepository
+import com.hianuy.todolist.project.usercase.TaskUserCase
 import kotlinx.coroutines.launch
 import java.lang.reflect.Executable
 
-class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
+class TaskViewModel(private val userCase: TaskUserCase) : ViewModel() {
 
     private val _taskStateEventData = MutableLiveData<TaskState>()
     val taskStateEventData: LiveData<TaskState>
@@ -21,6 +21,9 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
     private val _messageEventData = MutableLiveData<Int>()
     val messageEventData: LiveData<Int>
         get() = _messageEventData
+
+
+
 
     fun addOrUpdateTask(
         title: String, isMade: Boolean, deadline: String, priority: Priority, id: Long = 0
@@ -35,7 +38,7 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
         title: String, isMade: Boolean = false, deadline: String, priority: Priority
     ) = viewModelScope.launch {
         try {
-            val id = repository.insertTask(title, isMade, priority, deadline)
+            val id = userCase.insertTask(title, isMade, priority, deadline)
             if (id > 0) {
                 _taskStateEventData.value = TaskState.Inserted
                 _messageEventData.value = successfully_to_inserted_task
@@ -53,7 +56,7 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
         id: Long, title: String, isMade: Boolean, priority: Priority, deadline: String
     ) = viewModelScope.launch {
         try {
-            repository.updateTask(id, title, isMade, priority, deadline)
+            userCase.updateTask(id, title, isMade, priority, deadline)
             _taskStateEventData.value = TaskState.Updated
             _messageEventData.value = successfully_to_updated_task
 
@@ -66,7 +69,7 @@ class TaskViewModel(private val repository: TaskRepository) : ViewModel() {
 
     fun deleteTask(id: Long) = viewModelScope.launch {
         try {
-            repository.deleteTask(id)
+            userCase.deleteTask(id)
             _taskStateEventData.value = TaskState.Delete
             _messageEventData.value = successfully_to_deleted_task
 

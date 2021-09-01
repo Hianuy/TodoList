@@ -23,6 +23,7 @@ import com.hianuy.todolist.project.repository.DatabaseDataSource
 import com.hianuy.todolist.project.repository.TaskRepository
 import com.hianuy.todolist.project.ui.adapter.TaskAdapter
 import com.hianuy.todolist.project.ui.viewmodel.TaskListViewModel
+import org.koin.android.ext.android.inject
 
 class TaskListFragment : Fragment() {
 
@@ -32,20 +33,25 @@ class TaskListFragment : Fragment() {
     // metodo acessor customizado
 
 
-    private val viewModel: TaskListViewModel by viewModels {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                val taskDao: TaskDao = DatabaseHelper
-                    .getInstance(requireContext()).taskDao
+//    private val viewModel: TaskListViewModel by viewModels {
+//        object : ViewModelProvider.Factory {
+//            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+//                val taskDao: TaskDao = DatabaseHelper
+//                    .getInstance(requireContext()).taskDao
+//
+//                val repository: TaskRepository = DatabaseDataSource(taskDao)
+//
+//                return TaskListViewModel(repository) as T
+//            }
+//
+//
+//        }
+//
+//    }
 
-                val repository: TaskRepository = DatabaseDataSource(taskDao)
 
-                return TaskListViewModel(repository) as T
-            }
+    private val viewModel: TaskListViewModel by inject()
 
-
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
